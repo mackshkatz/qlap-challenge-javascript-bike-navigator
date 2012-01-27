@@ -12,8 +12,9 @@ function Bike() {
 }
 
 function init() {
+	var quickLeft = new google.maps.LatLng(40.017094, -105.283799);
   var myOptions = {
-    center: new google.maps.LatLng(40.017094, -105.283799),
+    center: quickLeft,
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -33,11 +34,11 @@ function move(direction, miles) {
 	}
 	else if ( direction == "east" ) 
 	{
-		this.lng -= degrees;
-	}
-	else ( direction == "west" ) 
-	{
 		this.lng += degrees;
+	}
+	else if ( direction == "west" ) 
+	{
+		this.lng -= degrees;
 	}
 	return [ this.lat, this.lng ];
 }
@@ -62,9 +63,11 @@ function plotLocation() {
 	var marker = new google.maps.Marker({
 		position: newLatLng,
 		map: new_map,
+		animation: google.maps.Animation.DROP,
 		title: "PLEASE WORK!!!!"
 	});
 
+	$('body').append('<p class="current-bike">Bike is currently located at: <span>' + this.lat + ', ' + this.lng + '.</span></p>'); 
 	return [ this.lat, this.lng ];
 }
 
