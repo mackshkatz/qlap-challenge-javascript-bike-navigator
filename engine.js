@@ -22,7 +22,6 @@ function init() {
 
 function move(direction, miles) {
 	console.log(this.lat, this.lng);
-	var direction = direction;
 	var degrees = miles / 69.172;
 	if ( direction == "north" ) 
 	{
@@ -50,6 +49,22 @@ function reset() {
 }
 
 function plotLocation() {
+	var newLatLng = new google.maps.LatLng( this.lat, this.lng );
+
+	var myOptions = {
+    center: newLatLng,
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+	var new_map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+	var marker = google.maps.Marker({
+		position: newLatLng,
+		map: new_map,
+		title: "PLEASE WORK!!!!"
+	});
+
 	return [ this.lat, this.lng ];
 }
 
