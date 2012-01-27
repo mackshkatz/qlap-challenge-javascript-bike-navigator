@@ -21,30 +21,37 @@ function init() {
 }
 
 function move(direction, miles) {
+	console.log(this);
 	var direction = direction;
 	var degrees = miles / 69.172;
 	var lat = this.lat;
 	var lng = this.lng;
 	if ( direction == "north" ) 
 	{
-		lat += degrees;
+		this.lat += degrees;
 	}
 	else if ( direction == "south" ) 
 	{
-		lat -= degrees;
+		this.lat -= degrees;
 	}
 	else if ( direction == "east" ) 
 	{
-		lng -= degrees;
+		this.lng -= degrees;
 	}
 	else ( direction == "west" ) 
 	{
-		lng += degrees;
+		this.lng += degrees;
 	}
-	return [ lat, lng ];
+	return [ this.lat, this.lng ];
+}
+
+function reset() {
+	
 }
 
 Bike.prototype.move = move;
+Bike.prototype.reset = reset;
+
 
 // Embed Google map
 // $('body').append('<img src=http://maps.googleapis.com/maps/api/staticmap?center=' + lat + ',' + lng + '&zoom=11&size=200x200&sensor=false />');
