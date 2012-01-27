@@ -49,8 +49,13 @@ function reset() {
 	return [ this.lat, this.lng ];
 }
 
+function plotLocation() {
+	return [ this.lat, this.lng ];
+}
+
 Bike.prototype.move = move;
 Bike.prototype.reset = reset;
+Bike.prototype.plotLocation = plotLocation;
 
 
 // Embed Google map
