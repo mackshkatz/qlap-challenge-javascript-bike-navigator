@@ -1,0 +1,1 @@
+Goal: Create a javascript object that represents a bike. Expose methods that allow the bike to move about in geo-spacial coordinates.
