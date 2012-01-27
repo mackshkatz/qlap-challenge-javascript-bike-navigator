@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	init();
+});
+
 // Constructor function
 function Bike() {
 	this.wheels = 2;
@@ -5,6 +9,15 @@ function Bike() {
 	this.width = 6;
 	this.lat = 40.017094;
 	this.lng = -105.283799;
+}
+
+function init() {
+  var myOptions = {
+    center: new google.maps.LatLng(40.017094, -105.283799),
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 }
 
 function move(direction, miles) {
@@ -32,3 +45,8 @@ function move(direction, miles) {
 }
 
 Bike.prototype.move = move;
+
+// Embed Google map
+// $('body').append('<img src=http://maps.googleapis.com/maps/api/staticmap?center=' + lat + ',' + lng + '&zoom=11&size=200x200&sensor=false />');
+
+
