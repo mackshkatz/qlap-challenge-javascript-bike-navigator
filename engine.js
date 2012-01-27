@@ -59,7 +59,7 @@ function plotLocation() {
 
 	var new_map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-	var marker = google.maps.Marker({
+	var marker = new google.maps.Marker({
 		position: newLatLng,
 		map: new_map,
 		title: "PLEASE WORK!!!!"
