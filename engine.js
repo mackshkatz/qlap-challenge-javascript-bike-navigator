@@ -21,11 +21,9 @@ function init() {
 }
 
 function move(direction, miles) {
-	console.log(this);
+	console.log(this.lat, this.lng);
 	var direction = direction;
 	var degrees = miles / 69.172;
-	var lat = this.lat;
-	var lng = this.lng;
 	if ( direction == "north" ) 
 	{
 		this.lat += degrees;
@@ -46,7 +44,9 @@ function move(direction, miles) {
 }
 
 function reset() {
-	
+	this.lat = 40.017094;
+	this.lng = -105.283799;
+	return [ this.lat, this.lng ];
 }
 
 Bike.prototype.move = move;
