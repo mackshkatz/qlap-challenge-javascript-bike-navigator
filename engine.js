@@ -18,6 +18,7 @@ function init() {
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
+  window.geocoder = new google.maps.Geocoder();
   window.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 }
 
@@ -51,6 +52,12 @@ function reset() {
 
 function plotLocation() {
 	var newLatLng = new google.maps.LatLng( this.lat, this.lng );
+	geocoder.geocode({'latLng': newLatLng}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			window.address = results[4].formatted_address;
+			$('body').append('<p class="current-bike">Bike is currently located at: <span>' + address + '.</span></p>');
+		}
+	});
 
 	map.setCenter(newLatLng)
 
@@ -61,7 +68,7 @@ function plotLocation() {
 		title: "PLEASE WORK!!!!"
 	});
 
-	$('body').append('<p class="current-bike">Bike is currently located at: <span>' + this.lat + ', ' + this.lng + '.</span></p>'); 
+	
 	return [ this.lat, this.lng ];
 }
 
