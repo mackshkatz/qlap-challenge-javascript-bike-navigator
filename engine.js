@@ -18,7 +18,7 @@ function init() {
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+  window.map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 }
 
 function move(direction, miles) {
@@ -52,17 +52,11 @@ function reset() {
 function plotLocation() {
 	var newLatLng = new google.maps.LatLng( this.lat, this.lng );
 
-	var myOptions = {
-    center: newLatLng,
-    zoom: 13,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-
-	var new_map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+	map.setCenter(newLatLng)
 
 	var marker = new google.maps.Marker({
 		position: newLatLng,
-		map: new_map,
+		map: map,
 		animation: google.maps.Animation.DROP,
 		title: "PLEASE WORK!!!!"
 	});
@@ -74,9 +68,3 @@ function plotLocation() {
 Bike.prototype.move = move;
 Bike.prototype.reset = reset;
 Bike.prototype.plotLocation = plotLocation;
-
-
-// Embed Google map
-// $('body').append('<img src=http://maps.googleapis.com/maps/api/staticmap?center=' + lat + ',' + lng + '&zoom=11&size=200x200&sensor=false />');
-
-
