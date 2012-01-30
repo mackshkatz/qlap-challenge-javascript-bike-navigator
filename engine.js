@@ -55,7 +55,7 @@ function plotLocation() {
 	geocoder.geocode({'latLng': newLatLng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			window.address = results[4].formatted_address;
-			$('body').append('<p class="current-bike">Bike is currently located in: <span>' + address + '.</span></p>');
+			$('<p class="current-bike">Bike is currently located in: <span>' + address + '.</span></p>').hide().appendTo('body').fadeIn(800);
 		}
 	});
 
