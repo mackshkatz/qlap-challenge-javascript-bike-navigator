@@ -54,6 +54,7 @@ function plotLocation() {
 	var newLatLng = new google.maps.LatLng( this.lat, this.lng );
 	geocoder.geocode({'latLng': newLatLng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
+			$('p.current-bike').hide();
 			window.address = results[4].formatted_address;
 			$('<p class="current-bike">Bike is currently located in: <span>' + address + '.</span></p>').hide().appendTo('body').fadeIn(800);
 		}
